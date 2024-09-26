@@ -1,15 +1,18 @@
-#define  _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-#include<string.h>
 int main()
-{   int m, n, i= 0;
+{
+	int m, n, i = 0;
 	scanf("%d %d", &m, &n);
 	int max = (m > n) ? m : n;
 	int min = (m > n) ? n : m;
-	for (i = min; i > 0; i--)
-	{if (max % i == 0&&min%i==0)
-			break;
+	//得出较大数
+	while (min != 0)
+	{
+		i = min;
+		min = max % min;
+		max = i;
 	}
-	printf("%d", i);
+	//辗转相除
+	printf("%d", max);
 	return 0;
 }
