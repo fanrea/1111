@@ -1,0 +1,10 @@
+package com.google.android.material.slider;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class7.dex */
+public interface LabelFormatter {
+    public static final int LABEL_FLOATING = 0;
+    public static final int LABEL_GONE = 2;
+    public static final int LABEL_WITHIN_BOUNDS = 1;
+
+    String getFormattedValue(float f);
+}

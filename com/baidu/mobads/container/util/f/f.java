@@ -1,0 +1,67 @@
+package com.baidu.mobads.container.util.f;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.baidu.mobads.container.util.bk;
+import com.baidu.mobads.container.util.f.d;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class15.dex */
+public class f {
+    public static boolean a(Context context) {
+        try {
+            if (com.baidu.mobads.container.util.x.a(null).a() >= 23 && "honor".equalsIgnoreCase(com.baidu.mobads.container.util.x.a(context).e())) {
+                return bk.a(context, "com.hihonor.id", 0) != null;
+            }
+            return false;
+        } catch (Throwable th) {
+            return false;
+        }
+    }
+
+    public static void b(Context context) {
+        try {
+            c(context);
+        } catch (Throwable th) {
+        }
+    }
+
+    private static void c(Context context) {
+        if (context == null) {
+            return;
+        }
+        try {
+            com.baidu.mobads.container.d.b.a().a(new h(context, new g()));
+        } catch (Throwable th) {
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    static class a extends d.a {
+        private a() {
+        }
+
+        /* synthetic */ a(g gVar) {
+            this();
+        }
+
+        @Override // com.baidu.mobads.container.util.f.d
+        public void a(int i, long j, boolean z, float f, double d, String str) {
+        }
+
+        @Override // com.baidu.mobads.container.util.f.d
+        public void a(int i, Bundle bundle) {
+            if (i == 0 && bundle != null) {
+                String string = bundle.getString("oa_id_flag");
+                if (!TextUtils.isEmpty(string)) {
+                    z.a(2592000000L, string);
+                } else {
+                    z.a(86400000L, string);
+                }
+                if (!"honor".equalsIgnoreCase(com.baidu.mobads.container.util.x.a(null).e())) {
+                    z.a((Context) null, "honor");
+                }
+            }
+        }
+    }
+}

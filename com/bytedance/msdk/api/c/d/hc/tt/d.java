@@ -1,0 +1,7 @@
+package com.bytedance.msdk.api.c.d.hc.tt;
+
+import com.bytedance.msdk.api.c.d.hc.hc.hc;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public abstract class d extends hc {
+}

@@ -1,0 +1,78 @@
+package com.kuaishou.livestream.message.nano;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.SOURCE)
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class17.dex */
+public @interface CommentNoticeType {
+    public static final int ACTIVE_TOP_BANNER_COMMENT_NOTICE = 5;
+    public static final int AD_SOCIAL_CONVERSION_BELL_NOTICE = 31;
+    public static final int COMMON_COMMENT_NOTICE = 100;
+    public static final int COMMON_SEND_COMMENT_NOTICE = 101;
+    public static final int COMMON_SEND_LIKE_NOTICE = 102;
+    public static final int FANS_COUNT_INCREASE_NOTICE = 21;
+    public static final int FANS_GROUP_SHARE_NOTICE = 14;
+    public static final int FANS_TOP_BOOST_FOLLOW_NOTICE = 15;
+    public static final int FANS_TOP_ORDER_COMMENT_NOTICE = 8;
+    public static final int FOLLOW_AUDIENCE_COMMENT_NOTICE = 18;
+    public static final int FOLLOW_AUTHOR_COMMENT_NOTICE = 4;
+    public static final int GAME_APPOINTMENT_DOWNLOAD_COMMENT_NOTICE = 7;
+    public static final int GAME_COMMON_COMMENT_NOTICE = 103;
+    public static final int GIFT_COMMENT_NOTICE = 3;
+    public static final int GZONE_LIVE_PASSWORD_LOTTERY_NOTICE = 30;
+    public static final int GZONE_SEND_FREE_GIFT_NOTICE = 9;
+    public static final int HIGH_VALUE_RECHARGE_NOTICE = 10;
+    public static final int LIVE_APPOINTMENT_COMMENT_NOTICE = 40;
+    public static final int LIVE_AUTHOR_HIGH_LIGHT_NOTICE = 17;
+    public static final int LIVE_AUTHOR_RESERVATION_NOTICE = 26;
+    public static final int LIVE_AUTHOR_SHARE_TASK_NOTICE = 16;
+    public static final int LIVE_BLESSING_MOMENT_NOTICE = 48;
+    public static final int LIVE_COLLECT_CARD_PK_2021_NOTICE = 29;
+    public static final int LIVE_COMMON_FOLLOW_AUTHOR_NOTICE = 105;
+    public static final int LIVE_COMMON_ROUTER_NOTICE = 104;
+    public static final int LIVE_COMMON_ROUTER_NOTICE_NEW = 200;
+    public static final int LIVE_FANS_GROUP_LAMP_PK_NOTICE = 34;
+    public static final int LIVE_FANS_TOP_QUICK_ORDER_NOTICE = 24;
+    public static final int LIVE_FEATURE_GUIDE_NOTICE = 32;
+    public static final int LIVE_GIFT_ACHIEVEMENT_UNLOCK_NOTICE = 204;
+    public static final int LIVE_GUEST_CHAT_GUIDE_NOTICE = 54;
+    public static final int LIVE_HAPPY_PLAY_FIRST_DRAW_NOTICE = 36;
+    public static final int LIVE_HAPPY_PLAY_SUPREME_DRAW_NOTICE = 39;
+    public static final int LIVE_HIGH_FREQUENCY_BEHAVIOR_COMMENT_NOTICE = 51;
+    public static final int LIVE_HONORED_GUEST_NOTICE = 53;
+    public static final int LIVE_KTV_EVALUATION = 45;
+    public static final int LIVE_LITE_AUTO_ENTER_ROOM_NOTICE_TYPE = 56;
+    public static final int LIVE_LITE_BENEFIT_CARD_NOTICE = 55;
+    public static final int LIVE_NEW_YEAR_MONEY_ACTIVITY_NOTICE_TYPE = 49;
+    public static final int LIVE_PK_FRIEND_RESERVATION_NOTICE = 28;
+    public static final int LIVE_PK_PERSONAL_GIFT_NOTICE = 33;
+    public static final int LIVE_PK_SELLING_CPS_NOTICE = 50;
+    public static final int LIVE_PK_SHARE_NOTICE = 41;
+    public static final int LIVE_PLUS_RECRUIT = 47;
+    public static final int LIVE_QUESTIONNAIRE_NOTICE = 22;
+    public static final int LIVE_RECHARGE_NOTICE = 46;
+    public static final int LIVE_REVENUE_DELIVERY_NOTICE = 43;
+    public static final int LIVE_REVENUE_DELIVERY_ORDER_DELIVERY_NOTICE = 44;
+    public static final int LIVE_ROBOT_GUIDE = 106;
+    public static final int LIVE_SURPRISE_RED_PACK_NOTICE = 23;
+    public static final int LIVE_TK_NOTICE = 201;
+    public static final int LIVE_VOICE_PARTY_CAPTION_NOTICE = 37;
+    public static final int LIVE_VOICE_PARTY_INVITE_FRIEND_NOTICE = 42;
+    public static final int LIVE_WATCHING_LIST_TUHAO_CHANGE_NOTICE = 38;
+    public static final int MERCHANT_BARGAIN_SOLD_OUT_NOTICE = 35;
+    public static final int NORMAL_COMMENT_NOTICE = 1;
+    public static final int OPEN_KSMG_COMMENT_NOTICE = 52;
+    public static final int SELF_MERCHANT_ASSISTANT_REPLY_NOTICE = 25;
+    public static final int SEND_GIFT = 202;
+    public static final int SERVICE_ACCOUNT_NOTICE = 19;
+    public static final int SF2021_SQUARE_AUTHOR_SUPPORT_NOTICE = 27;
+    public static final int UNKNOWN_COMMENT_NOTICE_TYPE = 0;
+    public static final int USER_LEVEL_LIGHT_BEFORE_OFF_NOTICE = 13;
+    public static final int USER_LEVEL_LIGHT_OFF_NOTICE = 11;
+    public static final int USER_LEVEL_LIGHT_ON_NOTICE = 12;
+    public static final int USER_LEVEL_PROTECTION_NOTICE = 20;
+    public static final int USER_LEVEL_UPDATE_COMMENT_NOTICE = 6;
+    public static final int USER_THRESHOLD_COMMON_ROUTER_NOTICE = 203;
+    public static final int WALL_THUMP_COMMENT_NOTICE = 2;
+}

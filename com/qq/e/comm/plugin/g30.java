@@ -1,0 +1,117 @@
+package com.qq.e.comm.plugin;
+
+import android.app.Activity;
+import com.qq.e.ads.banner2.UnifiedBannerView;
+import com.qq.e.ads.cfg.DownAPPConfirmPolicy;
+import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
+import com.qq.e.comm.adevent.ADListener;
+import com.qq.e.comm.compliance.DownloadConfirmListener;
+import com.qq.e.comm.constants.LoadAdParams;
+import com.qq.e.comm.pi.UBVI;
+import java.util.Map;
+
+/* compiled from: A */
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class18.dex */
+public class g30 implements UBVI {
+    private final UBVI a;
+    private final String b;
+
+    public void setDownAPPConfirmPolicy(DownAPPConfirmPolicy downAPPConfirmPolicy) {
+    }
+
+    public g30(UnifiedBannerView unifiedBannerView, Activity activity, String str, String str2, String str3, ADListener aDListener) {
+        this.b = str2;
+        this.a = i1.a(unifiedBannerView, activity, str, str2, str3, aDListener);
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void fetchAd() {
+        this.a.fetchAd();
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public boolean isValid() {
+        return this.a.isValid();
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void destroy() {
+        kp.b().b(this.b, e2.UNIFIED_BANNER);
+        this.a.destroy();
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void onWindowFocusChanged(boolean z) {
+        this.a.onWindowFocusChanged(z);
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void setRefresh(int i) {
+        this.a.setRefresh(i);
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void setLoadAdParams(LoadAdParams loadAdParams) {
+        this.a.setLoadAdParams(loadAdParams);
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public String getAdNetWorkName() {
+        return this.a.getAdNetWorkName();
+    }
+
+    @Override // com.qq.e.comm.pi.UBVI
+    public void setServerSideVerificationOptions(ServerSideVerificationOptions serverSideVerificationOptions) {
+        this.a.setServerSideVerificationOptions(serverSideVerificationOptions);
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public String getECPMLevel() {
+        return this.a.getECPMLevel();
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public int getECPM() {
+        return this.a.getECPM();
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendWinNotification(int i) {
+        this.a.sendWinNotification(i);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendLossNotification(int i, int i2, String str) {
+        this.a.sendLossNotification(i, i2, str);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void setBidECPM(int i) {
+        this.a.setBidECPM(i);
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public Map<String, Object> getExtraInfo() {
+        return this.a.getExtraInfo();
+    }
+
+    @Override // com.qq.e.comm.compliance.ApkDownloadComplianceInterface
+    public String getApkInfoUrl() {
+        return this.a.getApkInfoUrl();
+    }
+
+    @Override // com.qq.e.comm.compliance.ApkDownloadComplianceInterface
+    public void setDownloadConfirmListener(DownloadConfirmListener downloadConfirmListener) {
+        this.a.setDownloadConfirmListener(downloadConfirmListener);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendWinNotification(Map<String, Object> map) {
+        this.a.sendWinNotification(map);
+    }
+
+    @Override // com.qq.e.comm.pi.IBiddingLoss
+    public void sendLossNotification(Map<String, Object> map) {
+        this.a.sendLossNotification(map);
+    }
+}

@@ -1,0 +1,7 @@
+package com.bytedance.sdk.djx.core.business.web;
+
+import android.webkit.WebViewClient;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public class DJXWebClient extends WebViewClient {
+}

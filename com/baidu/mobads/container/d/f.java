@@ -1,0 +1,26 @@
+package com.baidu.mobads.container.d;
+
+import com.baidu.mobads.container.l.g;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class15.dex */
+class f implements RejectedExecutionHandler {
+    f() {
+    }
+
+    @Override // java.util.concurrent.RejectedExecutionHandler
+    public void rejectedExecution(Runnable runnable, ThreadPoolExecutor threadPoolExecutor) {
+        g.h("ThreadPoolFactory").e("Exceeded ThreadPoolExecutor pool size");
+        synchronized (this) {
+            if (c.d == null) {
+                LinkedBlockingQueue unused = c.e = new LinkedBlockingQueue();
+                ThreadPoolExecutor unused2 = c.d = new ThreadPoolExecutor(3, 3, 60L, TimeUnit.SECONDS, c.e, c.f);
+                c.d.allowCoreThreadTimeOut(true);
+            }
+        }
+        c.d.execute(runnable);
+    }
+}

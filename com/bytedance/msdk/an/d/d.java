@@ -1,0 +1,41 @@
+package com.bytedance.msdk.an.d;
+
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public class d extends b {
+    private String d;
+
+    @Override // com.bytedance.msdk.an.d.b
+    protected String hc() {
+        return "admob";
+    }
+
+    public d() {
+        com.bytedance.msdk.core.tc.d dVarH = h();
+        if (dVarH != null) {
+            this.d = dVarH.d();
+        }
+    }
+
+    @Override // com.bytedance.msdk.an.d.b
+    protected Map<String, Object> d() {
+        HashMap map = new HashMap();
+        map.put(com.alipay.sdk.m.k.b.D0, this.d);
+        return map;
+    }
+
+    @Override // com.bytedance.msdk.an.d.b
+    protected String b() {
+        if (!TextUtils.isEmpty(this.d)) {
+            return "";
+        }
+        com.bytedance.msdk.core.tc.d dVarH = h();
+        if (dVarH != null) {
+            this.d = dVarH.d();
+        }
+        return TextUtils.isEmpty(this.d) ? "appId为空" : "";
+    }
+}

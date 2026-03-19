@@ -1,0 +1,14 @@
+package kotlin.reflect.jvm.internal.impl.descriptors.impl;
+
+import java.util.List;
+import java.util.Set;
+
+/* compiled from: ModuleDescriptorImpl.kt */
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class8.dex */
+public interface ModuleDependencies {
+    List<ModuleDescriptorImpl> getAllDependencies();
+
+    List<ModuleDescriptorImpl> getDirectExpectedByDependencies();
+
+    Set<ModuleDescriptorImpl> getModulesWhoseInternalsAreVisible();
+}

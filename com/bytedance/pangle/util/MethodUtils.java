@@ -1,0 +1,165 @@
+package com.bytedance.pangle.util;
+
+import android.text.TextUtils;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public class MethodUtils {
+    public static final Class<?>[] EMPTY_CLASS_ARRAY;
+    private static Map<String, Method> sMethodCache = new HashMap();
+    private static final HashMap<Class<?>, Class<?>> sPrimitiveToWrapperMap;
+
+    static {
+        HashMap<Class<?>, Class<?>> map = new HashMap<>();
+        sPrimitiveToWrapperMap = map;
+        map.put(Boolean.TYPE, Boolean.class);
+        map.put(Byte.TYPE, Byte.class);
+        map.put(Character.TYPE, Character.class);
+        map.put(Short.TYPE, Short.class);
+        map.put(Integer.TYPE, Integer.class);
+        map.put(Long.TYPE, Long.class);
+        map.put(Double.TYPE, Double.class);
+        map.put(Float.TYPE, Float.class);
+        map.put(Void.TYPE, Void.class);
+        EMPTY_CLASS_ARRAY = new Class[0];
+    }
+
+    private static String getKey(Class<?> cls, String str, Class<?>... clsArr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(cls.toString()).append("#").append(str).append("#").append(cls.getClassLoader() != null ? Integer.valueOf(cls.getClassLoader().hashCode()) : "");
+        if (clsArr != null && clsArr.length > 0) {
+            for (Class<?> cls2 : clsArr) {
+                sb.append(cls2.toString()).append("#");
+            }
+        } else {
+            sb.append(Void.class.toString());
+        }
+        return sb.toString();
+    }
+
+    public static Method getAccessibleMethod(Class<?> cls, String str, Class<?>... clsArr) throws NoSuchMethodException, SecurityException {
+        Method declaredMethod;
+        String key = getKey(cls, str, clsArr);
+        synchronized (sMethodCache) {
+            declaredMethod = sMethodCache.get(key);
+        }
+        if (declaredMethod != null) {
+            if (!declaredMethod.isAccessible()) {
+                declaredMethod.setAccessible(true);
+            }
+            return declaredMethod;
+        }
+        while (cls != null) {
+            try {
+                declaredMethod = cls.getDeclaredMethod(str, clsArr);
+            } catch (NoSuchMethodException unused) {
+            }
+            if (declaredMethod == null) {
+                try {
+                    for (Method method : cls.getDeclaredMethods()) {
+                        if (method != null && TextUtils.equals(method.getName(), str)) {
+                            Class<?>[] parameterTypes = method.getParameterTypes();
+                            if (clsArr != null && parameterTypes != null && clsArr.length == parameterTypes.length) {
+                                boolean z = true;
+                                for (int i = 0; i < clsArr.length; i++) {
+                                    if (!isAssignableFrom(clsArr[i], parameterTypes[i])) {
+                                        z = false;
+                                    }
+                                }
+                                if (z) {
+                                    declaredMethod = method;
+                                }
+                            }
+                        }
+                    }
+                } catch (Throwable unused2) {
+                }
+            }
+            if (declaredMethod != null) {
+                declaredMethod.setAccessible(true);
+                synchronized (sMethodCache) {
+                    sMethodCache.put(key, declaredMethod);
+                }
+                return declaredMethod;
+            }
+            cls = cls.getSuperclass();
+        }
+        return null;
+    }
+
+    public static boolean isAssignableFrom(Class<?> cls, Class<?> cls2) {
+        if (cls2 == null) {
+            return false;
+        }
+        if (cls == null) {
+            return !cls2.isPrimitive();
+        }
+        if (cls.isPrimitive() && !cls2.isPrimitive()) {
+            cls = sPrimitiveToWrapperMap.get(cls);
+        }
+        if (cls2.isPrimitive() && !cls.isPrimitive()) {
+            cls2 = sPrimitiveToWrapperMap.get(cls2);
+        }
+        return cls2.isAssignableFrom(cls);
+    }
+
+    public static <T> T invokeConstructor(Class<T> cls, Object[] objArr, Class<?>[] clsArr) throws IllegalAccessException, NoSuchMethodException, InstantiationException, SecurityException, InvocationTargetException {
+        Constructor matchingAccessibleConstructor = getMatchingAccessibleConstructor(cls, clsArr);
+        if (matchingAccessibleConstructor != null) {
+            return (T) matchingAccessibleConstructor.newInstance(objArr);
+        }
+        return null;
+    }
+
+    public static Object invokeStaticMethod(Class cls, String str, Object... objArr) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        return invokeStaticMethod(cls, str, objArr, toClass(objArr));
+    }
+
+    public static Object invokeMethod(Object obj, String str, Object... objArr) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        return invokeMethod(obj, str, objArr, toClass(objArr));
+    }
+
+    public static Object invokeStaticMethod(Class cls, String str, Object[] objArr, Class<?>[] clsArr) throws IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
+        Method accessibleMethod = getAccessibleMethod(cls, str, clsArr);
+        if (accessibleMethod != null) {
+            return accessibleMethod.invoke(null, objArr);
+        }
+        return null;
+    }
+
+    public static Object invokeMethod(Object obj, String str, Object[] objArr, Class<?>[] clsArr) throws IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
+        Method accessibleMethod = getAccessibleMethod(obj.getClass(), str, clsArr);
+        if (accessibleMethod != null) {
+            return accessibleMethod.invoke(obj, objArr);
+        }
+        throw new NoSuchMethodException(str);
+    }
+
+    public static <T> Constructor<T> getMatchingAccessibleConstructor(Class<T> cls, Class<?>... clsArr) throws NoSuchMethodException, SecurityException {
+        try {
+            Constructor<T> declaredConstructor = cls.getDeclaredConstructor(clsArr);
+            if (!declaredConstructor.isAccessible()) {
+                declaredConstructor.setAccessible(true);
+            }
+            return declaredConstructor;
+        } catch (NoSuchMethodException unused) {
+            return null;
+        }
+    }
+
+    public static Class<?>[] toClass(Object... objArr) {
+        if (objArr != null && objArr.length != 0) {
+            Class<?>[] clsArr = new Class[objArr.length];
+            for (int i = 0; i < objArr.length; i++) {
+                Object obj = objArr[i];
+                clsArr[i] = obj == null ? null : obj.getClass();
+            }
+            return clsArr;
+        }
+        return EMPTY_CLASS_ARRAY;
+    }
+}

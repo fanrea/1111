@@ -1,0 +1,29 @@
+package com.google.zxing.oned.rss.expanded.decoders;
+
+import com.google.zxing.common.BitArray;
+import com.kwad.components.ct.api.tube.KSTubeParamInner;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class7.dex */
+abstract class AI01weightDecoder extends AI01decoder {
+    protected abstract void addWeightCode(StringBuilder sb, int i);
+
+    protected abstract int checkWeight(int i);
+
+    AI01weightDecoder(BitArray bitArray) {
+        super(bitArray);
+    }
+
+    final void encodeCompressedWeight(StringBuilder sb, int i, int i2) {
+        int iExtractNumericValueFromBitArray = getGeneralDecoder().extractNumericValueFromBitArray(i, i2);
+        addWeightCode(sb, iExtractNumericValueFromBitArray);
+        int iCheckWeight = checkWeight(iExtractNumericValueFromBitArray);
+        int i3 = KSTubeParamInner.FREE_ALL;
+        for (int i4 = 0; i4 < 5; i4++) {
+            if (iCheckWeight / i3 == 0) {
+                sb.append('0');
+            }
+            i3 /= 10;
+        }
+        sb.append(iCheckWeight);
+    }
+}

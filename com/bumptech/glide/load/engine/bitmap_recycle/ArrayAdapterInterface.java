@@ -1,0 +1,12 @@
+package com.bumptech.glide.load.engine.bitmap_recycle;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+interface ArrayAdapterInterface<T> {
+    int getArrayLength(T t);
+
+    int getElementSizeInBytes();
+
+    String getTag();
+
+    T newArray(int i);
+}

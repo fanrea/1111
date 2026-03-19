@@ -1,0 +1,8 @@
+package com.bytedance.d.hc.c;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public interface hc {
+    void d(long j, Thread thread, Throwable th);
+
+    boolean d(Throwable th);
+}

@@ -1,0 +1,135 @@
+package com.bykv.vk.component.ttvideo.player;
+
+import com.bytedance.sdk.component.utils.mq;
+import com.bytedance.sdk.openadsdk.zw.an;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+public class TTPlayerLibLoader {
+    private static final int DEGRADED_VERSION = 2925;
+    private static final String TAG = "TTPlayerLibLoader";
+    private static ILibraryLoader mDebugLibraryLoader;
+    private static ILibraryLoader mLibraryLoader;
+    private static ILibraryLoader mDefaultLibLoader = new DefaultLibraryLoader();
+    private static boolean mLibraryLoaded = false;
+    private static boolean IsErrored = false;
+    private static String mErrorInfo = null;
+    private static int mVersion = 0;
+
+    private static boolean loadPlayerlibrary(String str) {
+        String playerLibraryPath;
+        try {
+            TTPlayerConfiger.setLibraryName("lib" + str + ".so");
+            TTPlayerConfiger.checkDebugTTPlayerLib();
+            playerLibraryPath = TTPlayerConfiger.getPlayerLibraryPath();
+            if (playerLibraryPath != null && !new File(playerLibraryPath).exists()) {
+                playerLibraryPath = null;
+            }
+            if (playerLibraryPath != null) {
+                if (mDebugLibraryLoader != null) {
+                    ArrayList arrayList = new ArrayList();
+                    arrayList.add(playerLibraryPath);
+                    mDebugLibraryLoader.onLoadNativeLibs(arrayList);
+                } else {
+                    System.load(playerLibraryPath);
+                }
+            }
+        } catch (Throwable th) {
+            mq.d(th);
+            mErrorInfo = "load path library error." + th.toString();
+            playerLibraryPath = null;
+        }
+        if (playerLibraryPath == null) {
+            try {
+                ArrayList arrayList2 = new ArrayList();
+                arrayList2.add(str);
+                loadLibs(arrayList2, true);
+                mErrorInfo = null;
+            } catch (Throwable unused) {
+                mq.c(TAG, "load lib failed name = ".concat(String.valueOf(str)));
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static final synchronized void loadLibrary() {
+        try {
+            if (mVersion == 0) {
+                mVersion = TTPlayerConfiger.getValue(13, 0) / 1000;
+            }
+            if (TTPlayerConfiger.getValue(3, false)) {
+                if (!loadPlayerlibrary("ttmplayer_lite")) {
+                    IsErrored = true;
+                }
+            } else {
+                ArrayList arrayList = new ArrayList();
+                arrayList.add("ttmplayer_lite");
+                IsErrored = loadLibs(arrayList, false) ? false : true;
+            }
+        } catch (Throwable th) {
+            IsErrored = true;
+            mq.d(th);
+            mErrorInfo = "load default library error." + th.toString();
+        }
+    }
+
+    public static boolean isError() {
+        return IsErrored;
+    }
+
+    public static String getErrorInfo() {
+        return mErrorInfo;
+    }
+
+    public static final void setLibraryLoader(ILibraryLoader iLibraryLoader) {
+        mLibraryLoader = iLibraryLoader;
+    }
+
+    public static final void setDebugLibraryLoader(ILibraryLoader iLibraryLoader) {
+        mDebugLibraryLoader = iLibraryLoader;
+    }
+
+    private static boolean loadLibs(List<String> list, boolean z) {
+        boolean z2 = mLibraryLoaded;
+        if ((!z) && z2) {
+            return z2;
+        }
+        ILibraryLoader iLibraryLoader = mLibraryLoader;
+        if (iLibraryLoader != null) {
+            try {
+                mLibraryLoaded = iLibraryLoader.onLoadNativeLibs(list);
+            } catch (Throwable th) {
+                mErrorInfo = th.getMessage();
+            }
+        } else {
+            mLibraryLoaded = mDefaultLibLoader.onLoadNativeLibs(list);
+        }
+        return mLibraryLoaded;
+    }
+
+    private static class DefaultLibraryLoader implements ILibraryLoader {
+        private DefaultLibraryLoader() {
+        }
+
+        @Override // com.bykv.vk.component.ttvideo.player.ILibraryLoader
+        public boolean onLoadNativeLibs(List<String> list) {
+            Iterator<String> it = list.iterator();
+            while (it.hasNext()) {
+                try {
+                    an.d(it.next());
+                    String unused = TTPlayerLibLoader.TAG;
+                } catch (Throwable th) {
+                    String unused2 = TTPlayerLibLoader.mErrorInfo = th.getMessage();
+                    String unused3 = TTPlayerLibLoader.TAG;
+                    String unused4 = TTPlayerLibLoader.mErrorInfo;
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+package com.kwad.components.offline.api.tk.model.report;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.SOURCE)
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class7.dex */
+public @interface TKDownloadType {
+    public static final int NOT_PRE_LOAD = 0;
+    public static final int PRE_LOAD = 1;
+}

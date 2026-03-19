@@ -1,0 +1,10 @@
+package com.bytedance.sdk.djx.core.business.budrama.detail;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class4.dex */
+class DramaDetailDrawAdModel {
+    public int adPosition;
+
+    public DramaDetailDrawAdModel(int i) {
+        this.adPosition = i;
+    }
+}

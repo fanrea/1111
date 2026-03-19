@@ -1,0 +1,53 @@
+package com.kwad.components.ct.tube.channel.home;
+
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.recyclerview.widget.RecyclerView;
+import com.kwad.components.ct.response.model.tube.TubeInfo;
+import com.kwad.components.ct.tube.channel.home.b.b.d;
+import com.kwad.sdk.R;
+import com.kwad.sdk.api.core.fragment.KsFragment;
+import com.kwad.sdk.lib.widget.a.b.a;
+import com.kwad.sdk.mvp.Presenter;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class7.dex */
+public final class b extends com.kwad.sdk.lib.widget.a.c<TubeInfo, com.kwad.components.ct.tube.channel.home.b.a.a> {
+    private final com.kwad.components.ct.tube.channel.home.c.b aWp;
+
+    @Override // com.kwad.sdk.lib.widget.a.c
+    public final /* synthetic */ a.C0623a Bm() {
+        return Kk();
+    }
+
+    public b(KsFragment ksFragment, RecyclerView recyclerView, com.kwad.components.ct.tube.channel.home.c.b bVar) {
+        super(ksFragment, recyclerView, new com.kwad.components.ct.tube.d.a());
+        this.aWp = bVar;
+    }
+
+    @Override // com.kwad.sdk.lib.widget.a.c
+    public final View f(ViewGroup viewGroup, int i) {
+        return com.kwad.sdk.c.a.a.a(viewGroup, R.layout.ksad_tube_channel_item_layout, false);
+    }
+
+    @Override // com.kwad.sdk.lib.widget.a.c
+    public final Presenter bK(int i) {
+        Presenter presenter = new Presenter();
+        presenter.d(new com.kwad.components.ct.tube.channel.home.b.b.b());
+        presenter.d(new com.kwad.components.ct.tube.channel.home.b.b.c());
+        presenter.d(new com.kwad.components.ct.tube.channel.home.b.b.a());
+        presenter.d(new d());
+        return presenter;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    @Override // com.kwad.sdk.lib.widget.a.c
+    public void a(com.kwad.components.ct.tube.channel.home.b.a.a aVar, int i) {
+        super.a((b) aVar, i);
+        aVar.mSceneImpl = this.aWp.mSceneImpl;
+        aVar.aWo = this.aWp.aWo;
+    }
+
+    private static com.kwad.components.ct.tube.channel.home.b.a.a Kk() {
+        return new com.kwad.components.ct.tube.channel.home.b.a.a();
+    }
+}

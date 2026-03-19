@@ -1,0 +1,24 @@
+package com.kwai.player;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+/* JADX WARN: Classes with same name are omitted:
+  D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class17.dex
+ */
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class6.dex */
+public class KwaiPlayerReleasePool {
+    private static final Executor mExecutor = new ThreadPoolExecutor(2, 10, 60, TimeUnit.SECONDS, new LinkedBlockingQueue(), new ThreadFactory() { // from class: com.kwai.player.KwaiPlayerReleasePool.1
+        @Override // java.util.concurrent.ThreadFactory
+        public final Thread newThread(Runnable runnable) {
+            return new Thread(runnable, "KwaiPlayerReleasePool");
+        }
+    });
+
+    public static void submit(Runnable runnable) {
+        mExecutor.execute(runnable);
+    }
+}

@@ -1,0 +1,169 @@
+package com.qq.e.comm.plugin;
+
+import android.app.Activity;
+import com.qq.e.ads.cfg.DownAPPConfirmPolicy;
+import com.qq.e.ads.cfg.VideoOption;
+import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
+import com.qq.e.comm.adevent.ADListener;
+import com.qq.e.comm.compliance.DownloadConfirmListener;
+import com.qq.e.comm.constants.LoadAdParams;
+import com.qq.e.comm.pi.UIADI;
+import java.util.Map;
+
+/* compiled from: A */
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class18.dex */
+public class i30 implements UIADI {
+    private final UIADI a;
+    private String b;
+
+    public void setDownAPPConfirmPolicy(DownAPPConfirmPolicy downAPPConfirmPolicy) {
+    }
+
+    public i30(Activity activity, String str, String str2, String str3, ADListener aDListener) {
+        this.a = i1.a(activity, str, str2, str3, aDListener);
+        this.b = str2;
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void show() {
+        kp.b().b(this.b, e2.UNIFIED_INTERSTITIAL);
+        this.a.show();
+    }
+
+    public void showAsPopupWindow() {
+        kp.b().b(this.b, e2.UNIFIED_INTERSTITIAL);
+        this.a.show();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void close() {
+        this.a.close();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void loadAd() {
+        this.a.loadAd();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void loadFullScreenAD() {
+        this.a.loadFullScreenAD();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void showFullScreenAD(Activity activity) {
+        kp.b().b(this.b, e2.UNIFIED_INTERSTITIAL_FULLSCREEN);
+        this.a.showFullScreenAD(activity);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void setLoadAdParams(LoadAdParams loadAdParams) {
+        this.a.setLoadAdParams(loadAdParams);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void destroy() {
+        this.a.destroy();
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public int getECPM() {
+        return this.a.getECPM();
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendWinNotification(int i) {
+        this.a.sendWinNotification(i);
+    }
+
+    public void showAsPopupWindow(Activity activity) {
+        kp.b().b(this.b, e2.UNIFIED_INTERSTITIAL);
+        this.a.show(activity);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void show(Activity activity) {
+        kp.b().b(this.b, e2.UNIFIED_INTERSTITIAL);
+        this.a.show(activity);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendLossNotification(int i, int i2, String str) {
+        this.a.sendLossNotification(i, i2, str);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void setBidECPM(int i) {
+        this.a.setBidECPM(i);
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public Map<String, Object> getExtraInfo() {
+        return this.a.getExtraInfo();
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public String getECPMLevel() {
+        return this.a.getECPMLevel();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void setVideoOption(VideoOption videoOption) {
+        this.a.setVideoOption(videoOption);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void setMinVideoDuration(int i) {
+        this.a.setMinVideoDuration(i);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void setMaxVideoDuration(int i) {
+        this.a.setMaxVideoDuration(i);
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public int getAdPatternType() {
+        return this.a.getAdPatternType();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public String getAdNetWorkName() {
+        return this.a.getAdNetWorkName();
+    }
+
+    @Override // com.qq.e.comm.pi.LADI
+    public boolean isValid() {
+        return this.a.isValid();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public int getVideoDuration() {
+        return this.a.getVideoDuration();
+    }
+
+    @Override // com.qq.e.comm.pi.UIADI
+    public void setServerSideVerificationOptions(ServerSideVerificationOptions serverSideVerificationOptions) {
+        this.a.setServerSideVerificationOptions(serverSideVerificationOptions);
+    }
+
+    @Override // com.qq.e.comm.compliance.ApkDownloadComplianceInterface
+    public String getApkInfoUrl() {
+        return this.a.getApkInfoUrl();
+    }
+
+    @Override // com.qq.e.comm.compliance.ApkDownloadComplianceInterface
+    public void setDownloadConfirmListener(DownloadConfirmListener downloadConfirmListener) {
+        this.a.setDownloadConfirmListener(downloadConfirmListener);
+    }
+
+    @Override // com.qq.e.comm.pi.IBidding
+    public void sendWinNotification(Map<String, Object> map) {
+        this.a.sendWinNotification(map);
+    }
+
+    @Override // com.qq.e.comm.pi.IBiddingLoss
+    public void sendLossNotification(Map<String, Object> map) {
+        this.a.sendLossNotification(map);
+    }
+}

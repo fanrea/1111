@@ -1,0 +1,10 @@
+package androidx.transition;
+
+import android.graphics.drawable.Drawable;
+
+/* loaded from: D:\123Browser\下载\dump_dex_com.awfgwfd.joiyuevgyftrsa\class2.dex */
+interface ViewOverlayImpl {
+    void add(Drawable drawable);
+
+    void remove(Drawable drawable);
+}
